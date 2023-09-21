@@ -1,0 +1,6 @@
+#TICKER {getTGreply} {
+    #showme <aaa>**** <ccc>Polled for TG replies.<078>;
+    #sys python replybot.py;
+    #textin reply.txt;
+    #sys echo > reply.txt
+} {100}
