@@ -14,7 +14,7 @@ the chat.
 ## Setup
 
 Here, I assume you already have a bot set up using the BotFather service which
-Telegram provides. If not, do [check it out][bot] first. Then come back to:
+Telegram provides. If not, [read the tutorial][bot] first. Then come back to:
 
 - Copy replybot.py into your preferred script location.
 - Update the API token into the `_api_token` variable.
@@ -23,3 +23,5 @@ Telegram provides. If not, do [check it out][bot] first. Then come back to:
 - Import the #TICKER into your client, and reload it.
 
 Feel free to ping me on any of the usual channels if you need help.
+
+[bot]: https://core.telegram.org/bots/tutorial
