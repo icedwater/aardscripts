@@ -4,10 +4,11 @@
 Grab the birthdays and format them as a note.
 """
 
-def grab_birthdays():
+def retrieve_dates():
     """
     Connect to a birthday database and retrieve a list of birthdays.
     Return the list.
     """
-    pass
+    birthdays = []
+    return birthdays
  
