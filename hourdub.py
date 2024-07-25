@@ -49,6 +49,7 @@ def guess_minutes(lines: list) -> int:
     """
     From a provided list of mobdeaths lines, guess time to hourdub in minutes.
     :param lines:       the list of lines
+    :return kill_rate:  the estimated mob kills per minute
     :return minutes:    the estimated number of minutes
     """
     start_line = parse_mobs(lines[0])
@@ -61,14 +62,14 @@ def guess_minutes(lines: list) -> int:
     mob_gap = (1_000_000 - (end_line.get("mobs") % 1_000_000))
     minutes = round(mob_gap / kill_rate)
 
-    return minutes
+    return (kill_rate, minutes)
 
 
 
 def main():
     mobd = load_tail(mobdfile=mobdfile, tail=2)
-    dubmin = guess_minutes(mobd)
-    print(f"### At {dubmin} mobs per minute, hour of double in approximately {round(dubmin/60)} hours and {dubmin%60} minutes. ###")
+    (rate, dubmin) = guess_minutes(mobd)
+    print(f"### At {rate} mobs per minute, hour of double in approximately {round(dubmin/60)} hours and {dubmin%60} minutes. ###")
 
 if __name__ == "__main__":
     main()
