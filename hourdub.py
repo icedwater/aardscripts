@@ -53,11 +53,11 @@ def guess_minutes(lines: list) -> int:
     :return minutes:    the estimated number of minutes
     """
     start_line = parse_mobs(lines[0])
-    end_line = parse_mobs(lines[1])
- 
+    end_line = parse_mobs(lines[-1])
+
     mob_diff = end_line.get("mobs") - start_line.get("mobs")
     time_diff = end_line.get("min") - start_line.get("min")
-    kill_rate = mob_diff / time_diff
+    kill_rate = round(mob_diff / time_diff)
 
     mob_gap = (1_000_000 - (end_line.get("mobs") % 1_000_000))
     minutes = round(mob_gap / kill_rate)
@@ -67,7 +67,7 @@ def guess_minutes(lines: list) -> int:
 
 
 def main():
-    mobd = load_tail(mobdfile=mobdfile, tail=2)
+    mobd = load_tail(mobdfile=mobdfile, tail=4)
     (rate, dubmin) = guess_minutes(mobd)
     print(f"### At {rate} mobs per minute, hour of double in approximately {round(dubmin/60)} hours and {dubmin%60} minutes. ###")
 
